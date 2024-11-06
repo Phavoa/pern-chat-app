@@ -1,4 +1,3 @@
-import { Conversation } from './../../../node_modules/.prisma/client/index.d';
 import { Request, Response } from "express";
 import prisma from "../db/prisma.js";
 
