@@ -9,3 +9,23 @@ body {
   background-repeat: no-repeat;
   background-position: center;
 }
+
+/* Infinite Rotation Animation */
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-rotate {
+  animation: rotate 20s linear infinite;
+}
+
+.image-0 { transform: rotate(0deg) translateX(120px) rotate(0deg); }
+.image-1 { transform: rotate(72deg) translateX(120px) rotate(-72deg); }
+.image-2 { transform: rotate(144deg) translateX(120px) rotate(-144deg); }
+.image-3 { transform: rotate(216deg) translateX(120px) rotate(-216deg); }
+.image-4 { transform: rotate(288deg) translateX(120px) rotate(-288deg); }
