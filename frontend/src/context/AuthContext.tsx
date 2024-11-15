@@ -3,10 +3,9 @@ import toast from "react-hot-toast";
 
 type AuthUserType = {
     id: string;
+    fullName: string;
     username: string;
-    email: string;
     profilePic: string;
-    gender: string;
 };
 
 const AuthContext = createContext<{
@@ -37,7 +36,7 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
                 setAuthUser(data);
             } catch (error: any) {
                 console.error(error)
-                toast.error(error.message);
+                toast.error(error.error);
             }
             finally {
                 setIsLoading(false);

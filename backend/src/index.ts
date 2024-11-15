@@ -6,6 +6,8 @@ import cookieParser from "cookie-parser"
 import dotenv from "dotenv"
 dotenv.config();
 
+const PORT = process.env.PORT || 5000
+
 const app = express();
 
 
@@ -22,8 +24,8 @@ app.use((err: any, req: Request, res: Response, next: any) => {
 });
 
 
-app.listen(5000, () => {
-    console.log("App is listening on port 5000")
+app.listen(PORT, () => {
+    console.log(`App is running on port ${PORT}`)
 })
 
 
