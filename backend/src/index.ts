@@ -4,11 +4,11 @@ import messageRoutes from "./routes/message.route.js"
 import cookieParser from "cookie-parser"
 
 import dotenv from "dotenv"
+import { app, server } from "./socket/socket.js";
 dotenv.config();
 
 const PORT = process.env.PORT || 5000
 
-const app = express();
 
 
 app.use(express.json());
@@ -24,7 +24,7 @@ app.use((err: any, req: Request, res: Response, next: any) => {
 });
 
 
-app.listen(PORT, () => {
+server.listen(PORT, () => {
     console.log(`App is running on port ${PORT}`)
 })
 

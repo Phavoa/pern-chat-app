@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import prisma from "../db/prisma.js";
+import { getReceiverSocketId, io } from '../socket/socket.js';
 
 // Define an extended type for Request to include `user` (assuming `user` is added to `req` by authentication middleware)
 interface AuthenticatedRequest extends Request {
@@ -56,6 +57,12 @@ export const sendMessage = async (req: AuthenticatedRequest, res: Response): Pro
           },
         },
       });
+    }
+
+    const receiverSocketId = getReceiverSocketId(receiverId);
+
+    if(receiverSocketId) {
+      io.to(receiverSocketId).emit("newMessage", newMessage);
     }
 
     // Respond with the new message as JSON
