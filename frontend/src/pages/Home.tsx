@@ -1,8 +1,8 @@
 import { useState } from "react";
 import MessageContainer from "../components/messages/MessageContainer";
 import Sidebar from "../components/sidebar/Sidebar";
-import SideNav from "@/components/sideNav";
 import useTranslate from "@/hooks/useTranslate";
+import SideNav from "@/components/SideNav";
 
 const Home = () => {
   const [isClose, setIsClose] = useState(true);

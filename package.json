@@ -4,7 +4,9 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon --exec tsx backend/src/index.ts"
+    "dev": "nodemon --exec tsx backend/src/index.ts",
+    "start": "tsx backend/src/index.ts",
+    "build": "npm install && npm install --prefix frontend && npm run build --prefix frontend"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.6",
