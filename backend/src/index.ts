@@ -5,11 +5,12 @@ import cookieParser from "cookie-parser"
 
 import dotenv from "dotenv"
 import { app, server } from "./socket/socket.js";
+import { run } from "node:test";
+
 dotenv.config();
 
+
 const PORT = process.env.PORT || 5000
-
-
 
 app.use(express.json());
 app.use(cookieParser());
