@@ -1,71 +1,89 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import useLogin from "../hooks/useLogin";
+import AuthLayout from "../components/AuthLayout";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 
-const Login = () => {
-  const [inputs, setInputs] = useState({
-    username: "",
-    password: "",
-  });
-
+const Login: React.FC = () => {
+  const [inputs, setInputs] = useState({ username: "", password: "" });
   const { login, isLoading } = useLogin();
 
   const handleSubmitForm = async (e: React.FormEvent) => {
     e.preventDefault();
     login(inputs);
   };
-  console.log(inputs);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setInputs((prev) => ({ ...prev, [name]: value }));
+  };
+
   return (
-    <div className="flex flex-col items-center justify-center min-w-96 mx-auto">
-      <div className="w-full p-6 rounded-lg shadow-md bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-0">
-        <h1 className="text-3xl font-semibold text-center text-white">
-          Login
-          <span className="text-blue-500"> ChatApp</span>
-        </h1>
+    <AuthLayout>
+      <section className="flex flex-col items-center justify-center w-full max-w-md mx-auto">
+        <div className="w-full p-6 rounded-lg shadow-lg">
+          <h1 className="text-3xl mb-6 font-semibold text-center text-blue-500">
+            Welcome Back!
+          </h1>
+          <form onSubmit={handleSubmitForm} className="flex flex-col gap-4">
+            {/* Username Input */}
+            <div>
+              <label htmlFor="username" className="text-sm text-gray-200">
+                Username
+              </label>
+              <Input
+                type="text"
+                id="username"
+                name="username"
+                placeholder="Enter your username"
+                value={inputs.username}
+                onChange={handleInputChange}
+                className="mt-1 text-gray-100 border-gray-600 "
+                required
+              />
+            </div>
 
-        <form onSubmit={handleSubmitForm}>
-          <div>
-            <label className="label p-2 ">
-              <span className="text-base label-text">Username</span>
-            </label>
-            <input
-              type="text"
-              placeholder="Enter username"
-              className="w-full input input-bordered h-10"
-              onChange={(e) =>
-                setInputs({ ...inputs, username: e.target.value })
-              }
-            />
-          </div>
+            {/* Password Input */}
+            <div>
+              <label htmlFor="password" className="text-sm text-gray-200">
+                Password
+              </label>
+              <Input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Enter your password"
+                value={inputs.password}
+                onChange={handleInputChange}
+                className="mt-1 text-gray-100 border-gray-600 "
+                required
+              />
+            </div>
 
-          <div>
-            <label className="label">
-              <span className="text-base label-text">Password</span>
-            </label>
-            <input
-              type="password"
-              placeholder="Enter Password"
-              className="w-full input input-bordered h-10"
-              onChange={(e) =>
-                setInputs({ ...inputs, password: e.target.value })
-              }
-            />
-          </div>
-          <Link
-            to="/signup"
-            className="text-sm  hover:underline text-white hover:text-blue-600 mt-2 inline-block"
-          >
-            {"Don't"} have an account?
-          </Link>
+            {/* Sign Up Link */}
+            <div className="flex justify-end">
+              <Link
+                to="/signup"
+                className="text-sm text-gray-300 hover:underline hover:text-blue-500"
+              >
+                Don't have an account?
+              </Link>
+            </div>
 
-          <div>
-            <button className="btn btn-block btn-sm mt-2">
-              {isLoading ? "Loading..." : "Login"}
-            </button>
-          </div>
-        </form>
-      </div>
-    </div>
+            {/* Submit Button */}
+            <Button
+              type="submit"
+              className="w-full mt-4 bg-blue-600 hover:bg-blue-700 text-white"
+              disabled={isLoading}
+            >
+              {isLoading ? "Logging in..." : "Login"}
+            </Button>
+          </form>
+        </div>
+      </section>
+    </AuthLayout>
   );
 };
+
 export default Login;

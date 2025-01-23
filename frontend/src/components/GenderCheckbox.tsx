@@ -1,8 +1,10 @@
-const GenderCheckbox = ({ selectedGender, onCheckboxChange }: {
-	selectedGender: string;
-	onCheckboxChange: (gender: "male" | "female") => void;
+const GenderCheckbox = ({
+  selectedGender,
+  onCheckboxChange,
+}: {
+  selectedGender: string;
+  onCheckboxChange: (gender: "male" | "female") => void;
 }) => {
-
   return (
     <div className="flex">
       <div className="form-control">
@@ -10,10 +12,10 @@ const GenderCheckbox = ({ selectedGender, onCheckboxChange }: {
           <span className="label-text">Male</span>
           <input
             type="checkbox"
-            className="checkbox border-slate-900"
+            className="checkbox border-white"
             name="male"
             checked={selectedGender === "male"}
-			onChange={() => onCheckboxChange("male")}
+            onChange={() => onCheckboxChange("male")}
           />
         </label>
       </div>
@@ -22,10 +24,10 @@ const GenderCheckbox = ({ selectedGender, onCheckboxChange }: {
           <span className="label-text">Female</span>
           <input
             type="checkbox"
-            className="checkbox border-slate-900"
+            className="checkbox border-white"
             name="female"
             checked={selectedGender === "female"}
-			onChange={() => onCheckboxChange("female")}
+            onChange={() => onCheckboxChange("female")}
           />
         </label>
       </div>

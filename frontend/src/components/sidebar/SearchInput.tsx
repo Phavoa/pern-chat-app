@@ -3,6 +3,7 @@ import { useState } from "react";
 import useConversation from "../../zustand/useConversation";
 import toast from "react-hot-toast";
 import useGetConversations from "../../hooks/useGetConversations";
+import { Input } from "../ui/input";
 
 const SearchInput = () => {
 	const [search, setSearch] = useState("");
@@ -25,16 +26,16 @@ const SearchInput = () => {
 	}
 
 	return (
-		<form className='flex items-center gap-2' onSubmit={handleSubmit}>
-			<input
-				type='text'
+		<form className='flex items-center gap-2 relative' onSubmit={handleSubmit}>
+			<Input
+				type='search'
 				placeholder='Search…'
-				className='input-sm md:input input-bordered rounded-full sm:rounded-full w-full'
+				className='text-gray-200'
 				value={search}
 				onChange={(e) => setSearch(e.target.value)}
 			/>
-			<button type='submit' className='btn md:btn-md btn-sm btn-circle bg-sky-500 text-white  '>
-				<Search className='w-4 h-4 md:w-6 md:h-6 outline-none' />
+			<button type='submit' className='h-full w-8 text-white absolute right-0 '>
+				<Search className='text-white w-3 h-3 md:w-5 md:h-5 outline-none' />
 			</button>
 		</form>
 	);
