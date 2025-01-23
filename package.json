@@ -3,11 +3,14 @@
   "version": "1.0.0",
   "type": "module",
   "main": "index.js",
-  "scripts": {
-   "dev": "prisma generate && nodemon --exec tsx backend/src/index.ts",
-  "start": "prisma generate && tsx backend/src/index.ts",
+"scripts": {
+  "dev": "npx prisma generate --schema=./backend/prisma/schema.prisma && nodemon --exec tsx backend/src/index.ts",
+  "start": "npx prisma generate --schema=./backend/prisma/schema.prisma && tsx backend/src/index.ts",
   "build": "npm install && npm install --prefix frontend && npm run build --prefix frontend"
-  },
+},
+"prisma": {
+  "schema": "./backend/prisma/schema.prisma"
+},
   "devDependencies": {
     "@types/bcryptjs": "^2.4.6",
     "@types/cookie-parser": "^1.4.7",
@@ -20,14 +23,14 @@
     "typescript": "^5.6.3"
   },
   "dependencies": {
-    "@prisma/client": "^5.21.1",
+    "@prisma/client": "^5.22.0",
     "bcryptjs": "^2.4.3",
     "cookie-parser": "^1.4.7",
     "dotenv": "^16.4.5",
     "express": "^4.21.1",
     "jsonwebtoken": "^9.0.2",
     "openai": "^4.72.0",
-    "prisma": "^5.21.1",
+    "prisma": "^5.22.0",
     "socket.io": "^4.8.1",
     "socket.io-client": "^4.8.1"
   }
