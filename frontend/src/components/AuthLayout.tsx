@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-import Globe from "../assets/images/globe.png";
+import Globe from "/images/globe.png";
 
 interface AuthLayoutProps {
   children: ReactNode;
