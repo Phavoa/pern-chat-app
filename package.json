@@ -4,13 +4,13 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "dev": "npx prisma generate --schema=./backend/prisma/schema.prisma && nodemon --exec tsx backend/src/index.ts",
-    "start": "npx prisma generate --schema=./backend/prisma/schema.prisma && tsx backend/src/index.ts",
-    "build": "npm install && npm install --prefix frontend && npm run build --prefix frontend"
-  },
-  "prisma": {
-    "schema": "./backend/prisma/schema.prisma"
-  },
+  "dev": "npx prisma generate --schema=./backend/prisma/schema.prisma && nodemon --exec tsx backend/src/index.ts",
+  "start": "npx prisma generate --schema=./backend/prisma/schema.prisma && tsx backend/src/index.ts",
+  "build": "npm install && npm install --prefix frontend && npm run build --prefix frontend"
+},
+"prisma": {
+  "schema": "./backend/prisma/schema.prisma"
+},
   "devDependencies": {
     "@types/bcryptjs": "^2.4.6",
     "@types/cookie-parser": "^1.4.7",
