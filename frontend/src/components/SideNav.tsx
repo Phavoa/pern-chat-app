@@ -70,7 +70,7 @@ const SideNav: FC<SideNavProps> = ({ isClose, setIsClose }) => {
   return (
     <div
       className={`${
-        isClose ? "w-[40px]" : "w-[250px]"
+        isClose ? "w-[40px]" : "z-50 w-[250px]"
       } transition-all duration-300 ease-in-out fixed top-0 left-0 h-screen flex flex-col pt-24 z-100 bg-[#000F19]`}
     >
       {/* Menu Toggle */}
